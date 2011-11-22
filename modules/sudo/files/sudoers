@@ -1,0 +1,10 @@
+Defaults	env_reset
+Defaults  !authenticate
+
+Cmnd_Alias NSHELLS = /bin/sh,/bin/bash
+Cmnd_Alias NSU = /bin/su
+
+root	ALL=(ALL:ALL) ALL
+andrei ALL=(ALL:ALL) NOPASSWD: ALL
+
+%sudo ALL= NOPASSWD: ALL, !NSHELLS, !NSU

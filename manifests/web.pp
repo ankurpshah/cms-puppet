@@ -1,24 +1,18 @@
-class web {
-  Exec {
-    path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
-  }
+import "base"
 
-  exec { "apt-update":
-    command => "apt-get -q update"
-  }
+class web {  
+    include apache
+    apache::module {"rewrite": ensure => present }
+    
+    user { "www-data":
+        groups => "admin"
+    }
+  
+    include mysql::client
+    include php
+    include php::apache
 
-  Exec["apt-update"] -> Package <| |>
-
-  include git
-  
-  include apache
-  apache::module {"rewrite": ensure => present }
-  
-  include mysql::client
-  include php
-  include php::apache
-  
-  include phing
+    include phing
 }
 
 include web
