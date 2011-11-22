@@ -13,6 +13,13 @@ class web {
     include php::apache
 
     include phing
+    
+    cron { "puppet":
+        command => "puppet apply --logdest syslog /etc/puppet/manifests/web.pp",
+        user    => "root",
+        hour    => "*",
+        minute  => "30"
+    }
 }
 
 include web
