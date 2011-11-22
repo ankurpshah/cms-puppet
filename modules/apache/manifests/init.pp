@@ -5,11 +5,11 @@ class apache {
 	#sites are added or removed, since a full restart then would be
 	# a waste of time. When the module-config changes, a force-reload is
 	# needed.
-	exec { "reload-apache":
+	exec { "reload-apache2":
 		refreshonly => true
 	}
 
-	exec { "force-reload-apache":
+	exec { "force-reload-apache2":
 		refreshonly => true
 	}
 	
