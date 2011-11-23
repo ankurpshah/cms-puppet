@@ -1,6 +1,11 @@
 import "base"
 
-class web {  
+class web {
+    package {"capistrano":
+        ensure   => present,
+        provider => "gem"
+    }
+
     include apache
     apache::module {"rewrite": ensure => present }
     
