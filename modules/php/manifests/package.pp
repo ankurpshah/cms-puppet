@@ -17,7 +17,7 @@ class php::package {
       ensure => $php_version,
   }
   
-  package { ["php-pear", "php5-imagick"]: 
+  package { ["php-pear", "php5-imagick", "php5-mcrypt"]: 
       ensure => present
   }
 }
