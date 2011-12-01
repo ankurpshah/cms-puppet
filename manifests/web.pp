@@ -1,6 +1,16 @@
 import "base"
 
-class web {  
+class web {
+    package {"capistrano":
+        ensure   => "2.8.0",
+        provider => "gem"
+    }
+    
+    package {"capistrano-ext":
+        ensure   => present,
+        provider => "gem"
+    }
+
     include apache
     apache::module {"rewrite": ensure => present }
     
