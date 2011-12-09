@@ -16,7 +16,6 @@ class base {
 
     user::create { "andrei": 
         groups => $user::admin_group,
-        uid => 10000,
         require => Class["user"]
     }
 
@@ -30,7 +29,6 @@ class base {
 
     user::create { "dan": 
         groups => $user::admin_group,
-        uid => 10001,
         require => Class["user"]
     }
 
