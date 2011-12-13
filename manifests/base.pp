@@ -5,6 +5,9 @@ Exec {
 }
 
 class base {
+    # Install langauge pack
+    package { "language-pack-en": ensure => present }
+    
     # Install basic things in pre
     class { 'user': stage => pre }
     class { 'sudo': stage => pre }
