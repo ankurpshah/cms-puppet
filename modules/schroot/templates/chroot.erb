@@ -1,0 +1,16 @@
+[<%= @name %>]
+aliases=<%= @aliases %>
+description=<%= @description %>
+<% if has_variable?("type") && @type == 'lvm-snapshot' then %>
+type=lvm-snapshot
+<% if has_variable?("lvm_snapshot_options") then %>
+lvm-snapshot-options=<%= @lvm_snapshot_options %>
+<% end %>
+<% if has_variable?("device") then %>
+device=<%= @device %>
+<% end %>
+<% end %>
+groups=<%= @groups %>
+root-groups=<%= @root_groups %>
+source-groups=<%= @source_groups %>
+source-root-groups=<%= @source_root_groups %>
