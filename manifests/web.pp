@@ -25,7 +25,7 @@ class web {
     include phing
     
     cron { "puppet":
-        command => "puppet apply --logdest syslog /etc/puppet/manifests/web.pp",
+        command => "wget -O- $puppet_tarball | tar --strip-components=1 -xzC /etc/puppet/ && puppet apply --verbose --logdest syslog /etc/puppet/manifests/web.pp",
         user    => "root",
         hour    => "*",
         minute  => "30"
