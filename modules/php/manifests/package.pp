@@ -14,7 +14,7 @@ class php::package {
   ]
 
   package { $php_packages:
-      ensure => $php_version,
+      ensure => installed
   }
   
   package { ["php-pear", "php5-imagick", "php5-mcrypt"]: 
