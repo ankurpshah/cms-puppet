@@ -18,7 +18,7 @@ class base {
     include git
 
     user::create { "andrei": 
-        groups => $user::admin_group,
+        groups => "andrei",
         require => Class["user"]
     }
 
