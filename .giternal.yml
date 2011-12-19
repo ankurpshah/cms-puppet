@@ -1,3 +1,9 @@
 lvm:
   repo: https://github.com/puppetlabs/puppet-lvm.git
   path: modules/
+nfs:
+  repo: https://github.com/camptocamp/puppet-nfs.git
+  path: modules/
+common:
+  repo: https://github.com/camptocamp/puppet-common.git
+  path: modules/
