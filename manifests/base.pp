@@ -45,3 +45,5 @@ class base {
 }
 
 class { 'base': stage => pre }
+
+include base
