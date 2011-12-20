@@ -42,6 +42,19 @@ class base {
         type    => 'rsa',
         key     => 'AAAAB3NzaC1yc2EAAAABIwAAAQEAtwzmQHIQTMK1XUjuiwCDzniZKhUtFX9HYON5z8LPOnetO9RA75opsDp0kawVhl+Gp8lg4pZeVL7IYQVp+q1S0PHfEJ/OfFJxHLKSU+DAbrS9rnBjsOQb/+YQr3W/DQzTUFxfUwgTcilkwmnw3Brr9S2mf+5mLgK1IBPmia+M6IM2cV5oedM8EDd4ETLR7vCVrupIjKL79uITPshQHGmOJcFcpGwsMVBOhPEeHM+9ye+j7ATcoLo2a+kKCtvUBJUlJ3xIuIBBv/YJ2uGTAuVvD7w4tTvprv1p5dFnkKwRXpiH/RVquqaofwMwOxNLOGpYBhTIpRWumK18WGIIUzT5KQ=='
     }
+    
+    user::create { "mmitchell": 
+        groups => $user::admin_group,
+        require => Class["user"]
+    }
+
+    ssh_authorized_key { "mmitchell":
+        ensure  => present,
+        require => User['mmitchell'],
+        user    => 'mmitchell',
+        type    => 'rsa',
+        key     => 'AAAAB3NzaC1kc3MAAACBAO38xrFyiqY3DS+c2MS/eN5LOH3V6huEShKC7L8/MFqMIP2dNf0hV90KIO/ij9kT0HVDF2p2MM/zgb9+I+f7JX7TyaPwbGU63Z3b66wcQd+wVYwGSnfnmfAbUVdd8Z0shfjShxJbk6G17PDK+oNvybT07PSXiOLdSgYWCjdog9VrAAAAFQCvVRFU8hMNf2ZZZuDrRHK72pKZ0QAAAIBvOVo6EZJJOoMod3WR+UH7ipJuii2HYpOXcryyCf6NaNq6J+QM5M/R5Y/jc5vfL2WuJxmqTJjQPBRpwJh+r3zHgS+qIFNlTWIjMiq9BRYUzvW6n3ai9uGFTtWS6djQVyaomTcQBq2wPDkt9Q4m6g4K8cZuopThcUcqecWboZ6SBgAAAIBQQ0EVnD8VqB0+Dd6O8tWntlWqG68PzP7WiKkfpgCFyvqObT7ow4Z7V0kj3cyoJiO4vodyQQSH2IHqvG643urYuh4PdTzlt9Lm2SOkHvNe0o3wIpBNhNuKk85x9wXQWVxzhTjrXtL6/zYYnlYO8s4hwQw274CYnSWXbNFu2crtRQ== marcusmitchell@marcus-macbook.local'
+    }
 }
 
 class { 'base': stage => pre }
