@@ -1,4 +1,4 @@
-define user::create($ensure=present, $uid, $groups, $password='!') {
+define user::create($ensure=present, $groups, $password='!') {
     $bash = $operatingsystem ?{
         "freebsd" => "/usr/local/bin/bash",
         default => "/bin/bash",
@@ -10,7 +10,6 @@ define user::create($ensure=present, $uid, $groups, $password='!') {
         user { $name:
             ensure      => $ensure,
             groups      => $groups,
-            uid         => $uid,
             managehome  => true,
             shell       => $bash,
             gid         => $name,
@@ -20,7 +19,6 @@ define user::create($ensure=present, $uid, $groups, $password='!') {
         user { $name:
             ensure      => $ensure,
             groups      => $groups,
-            uid         => $uid,
             managehome  => true,
             shell       => $bash,
             gid         => $name,
