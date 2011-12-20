@@ -4,6 +4,6 @@ When cloudformation starts new servers, it passes a bash script through userdata
 
 The base of the script that runs Puppet is:
 
-apt-get update && apt-get install -y puppet rubygems
-mkdir -p /etc/puppet && wget -O- https://github.com/HouseTrip/cms-puppet/tarball/master | tar --strip-components=1 -xzC /etc/puppet/
-puppet apply --logdest syslog /etc/puppet/manifests/web.pp
+    apt-get update && apt-get install -y puppet rubygems
+    mkdir -p /etc/puppet && wget -O- https://github.com/HouseTrip/cms-puppet/tarball/master | tar --strip-components=1 -xzC /etc/puppet/
+    puppet apply --logdest syslog /etc/puppet/manifests/web.pp
