@@ -55,6 +55,19 @@ class base {
         type    => 'rsa',
         key     => 'AAAAB3NzaC1kc3MAAACBAO38xrFyiqY3DS+c2MS/eN5LOH3V6huEShKC7L8/MFqMIP2dNf0hV90KIO/ij9kT0HVDF2p2MM/zgb9+I+f7JX7TyaPwbGU63Z3b66wcQd+wVYwGSnfnmfAbUVdd8Z0shfjShxJbk6G17PDK+oNvybT07PSXiOLdSgYWCjdog9VrAAAAFQCvVRFU8hMNf2ZZZuDrRHK72pKZ0QAAAIBvOVo6EZJJOoMod3WR+UH7ipJuii2HYpOXcryyCf6NaNq6J+QM5M/R5Y/jc5vfL2WuJxmqTJjQPBRpwJh+r3zHgS+qIFNlTWIjMiq9BRYUzvW6n3ai9uGFTtWS6djQVyaomTcQBq2wPDkt9Q4m6g4K8cZuopThcUcqecWboZ6SBgAAAIBQQ0EVnD8VqB0+Dd6O8tWntlWqG68PzP7WiKkfpgCFyvqObT7ow4Z7V0kj3cyoJiO4vodyQQSH2IHqvG643urYuh4PdTzlt9Lm2SOkHvNe0o3wIpBNhNuKk85x9wXQWVxzhTjrXtL6/zYYnlYO8s4hwQw274CYnSWXbNFu2crtRQ== marcusmitchell@marcus-macbook.local'
     }
+
+    user::create { "simon": 
+        groups => $user::admin_group,
+        require => Class["user"]
+    }
+
+    ssh_authorized_key { "simon":
+        ensure  => present,
+        require => User['simon'],
+        user    => 'dan',
+        type    => 'rsa',
+        key     => 'AAAAB3NzaC1yc2EAAAABIwAAAQEA3mVClJPe8kuUUCyF9eBm1w6TLF2HukRzDsHM6Q0n2zZXDfICg0Fsk0nKvKhc9rLSIj5WdN2vSLa9tvmt5cDW7Nhp8Rp7/mhFKX29IXzaYTDxbwiXEss1CGiYGDJtcF0+lgKex/jju2ScvhEGb8iXRAkFdh3L+FW/2yqHNVpBoWYYVtYA/s2kWAqQNIr+0s/Je+dwcBuI6YUPlgRhPyJ1RzV9w7OguOf35OlP7UjddWsx+PtzJyfpah3uBkF0GcY1JeOZYNI/3R1nw9m1xMaBgSnCkc0J+BVLKZ4d6gJYUCirqCv8qfzR6kuOLMbLLA+ihJVknPk/hRsVAQpc4g0SkQ=='
+    }
 }
 
 class { 'base': stage => pre }
